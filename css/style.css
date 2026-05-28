@@ -1,0 +1,383 @@
+/* ============================================================
+   style.css — Electricity Billing System
+   Clean white & blue professional theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:          #f0f4f8;
+  --surface:     #ffffff;
+  --surface2:    #f6f8fb;
+  --border:      #dde3ec;
+  --accent:      #1a56db;
+  --accent-dim:  #9fb6e8;
+  --accent-muted:#e8effe;
+  --text:        #111827;
+  --text-muted:  #6b7280;
+  --success:     #0e7c4a;
+  --success-bg:  #ecfdf5;
+  --danger:      #b91c1c;
+  --danger-bg:   #fef2f2;
+  --radius:      8px;
+  --mono:        'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  --sans:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:   0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 64px;
+  box-shadow: var(--shadow-sm);
+}
+.app-header .logo {
+  width: 36px;
+  height: 36px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.app-header .logo svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.app-header h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+.app-header p {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* ── Layout ───────────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: .85rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  margin-bottom: -1px;
+  transition: color .15s, border-color .15s;
+  letter-spacing: .01em;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.card h2 {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+
+/* ── Forms ────────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: .03em;
+}
+
+input, select, textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: .9rem;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+  width: 100%;
+}
+input:hover, select:hover { border-color: #b0bdd0; }
+input:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, .1);
+}
+input::placeholder { color: #b0b8c8; }
+select option { background: var(--surface); color: var(--text); }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: .85rem;
+  font-weight: 500;
+  padding: 9px 22px;
+  transition: background .15s, box-shadow .15s, transform .1s;
+  letter-spacing: .02em;
+}
+.btn:hover  { box-shadow: var(--shadow-sm); }
+.btn:active { transform: scale(.98); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: #1648c2; }
+
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: #edf1f7; }
+
+/* ── Alerts ───────────────────────────────────────────────── */
+.alert {
+  border-radius: 6px;
+  font-size: .84rem;
+  font-weight: 500;
+  padding: 9px 14px;
+  margin-top: 14px;
+  display: none;
+}
+.alert.show { display: block; }
+.alert-success {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+.alert-error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* ── Table ────────────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .85rem;
+}
+thead th {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: 10px 14px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--surface2); }
+tbody td { padding: 11px 14px; color: var(--text); }
+
+/* Status badge */
+.badge {
+  border-radius: 4px;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.badge-unpaid {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+.badge-paid {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+/* ── Bill preview receipt ─────────────────────────────────── */
+#bill-preview {
+  display: none;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-top: 3px solid var(--accent);
+  padding: 24px;
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: .82rem;
+}
+#bill-preview h3 {
+  color: var(--accent);
+  text-align: center;
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-family: var(--sans);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.receipt-row .receipt-val { color: var(--text); }
+.receipt-row.total {
+  border-bottom: none;
+  border-top: 1px solid var(--accent-dim);
+  margin-top: 8px;
+  padding-top: 11px;
+  color: var(--accent);
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px;
+  font-size: .88rem;
+}
+
+/* ── Spinner ──────────────────────────────────────────────── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .65s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Summary stat cards ───────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--accent);
+}
+.stat-card .label {
+  font-size: .72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 500;
+}
+.stat-card .value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  font-family: var(--mono);
+  letter-spacing: -.02em;
+}
+
+/* ── Slab rates details ───────────────────────────────────── */
+details {
+  background: var(--accent-muted);
+  border: 1px solid #c7d8f8;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: .85rem;
+  user-select: none;
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details[open] summary { margin-bottom: 10px; }
+details div {
+  color: var(--text);
+  font-size: .83rem;
+  line-height: 2;
+}
